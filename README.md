@@ -11,8 +11,13 @@ Run npm start in a separate terminal window to build the TypeScript, watch for c
 
 Go to [localHost](http://localhost:8080) in your browser
 
-## Testin The Application
-Run ng test
+## Testing The Application
+Run ng test (test Orders && New-Orders components with Karma)
+
+## Stack
+FE: Angular
+BE: NodeJs
+Tests: Karma (FE only)
 
 ## Contributing
 [Angular-JumpStart](https://github.com/DanWahlin/Angular-JumpStart) by Dan Wahlin
