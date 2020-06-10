@@ -1,43 +1,51 @@
 <div class="customers view indent">
+  <div class="container">
+    <header>
+      <h3>
+        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Orders
+      </h3>
+    </header>
+    <br/>
+    <div class="row">
+      <div class="col-md-10 navbar toolbar-item">
+        <a (click)="showNewOrderForm()">
+          <span class="glyphicon glyphicon-plus"></span> Toggle Add New Order
+        </a>
+      </div>
+    </div>
+    <cm-new-order *ngIf="showAddOrderModal" [allCustomers]="this.allCustomers"
+                  (newOrderEmitter)="handleNewOrder($event)"></cm-new-order>
     <div class="container">
-        <header>
-            <h3>
-                <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Orders
-            </h3>
-        </header>
-        <br />
+      <div *ngIf="shownCustomers">
 
-        <div class="container">
-            <div *ngIf="customers">
-
-                <div class="row" *ngFor="let customer of customers;trackBy:trackbyService.customer">
-                    <h4>{{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
-                    <br />
-                    <table *ngIf="customer.orders && customer.orders.length" class="table table-striped table-hover orders-table">
-                        <tr *ngFor="let order of customer.orders;trackBy:trackbyService.order">
-                            <td>{{order.productName}}</td>
-                            <td class="text-right">{{ order.itemCost | currency:'USD':'symbol' }}</td>    
-                        </tr>
-                        <tr class="summary-border">
-                            <td>&nbsp;</td>
-                            <td class="text-right">{{ customer.orderTotal | currency:'USD':'symbol' }}
-                        </tr>
-                    </table>
-                    <div *ngIf="!customer.orders || !customer.orders.length">
-                        No orders found
-                    </div> 
-                </div>
-
-                <cm-pagination [hidden]="!customers"
-                    [totalItems]="totalRecords" 
-                    [pageSize]="pageSize" 
-                    (pageChanged)="pageChanged($event)"></cm-pagination>
-
-            </div>
-            <div *ngIf="!customers">
-                No customers found
-            </div>
+        <div class="row" *ngFor="let customer of shownCustomers;trackBy:trackbyService.customer">
+          <h4>{{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
+          <br/>
+          <table *ngIf="customer.orders && customer.orders.length" class="table table-striped table-hover orders-table">
+            <tr *ngFor="let order of customer.orders;trackBy:trackbyService.order">
+              <td>{{order.productName}}</td>
+              <td class="text-right">{{ order.itemCost | currency:'USD':'symbol' }}</td>
+            </tr>
+            <tr class="summary-border">
+              <td>&nbsp;</td>
+              <td class="text-right">{{ customer.orderTotal | currency:'USD':'symbol' }}
+            </tr>
+          </table>
+          <div *ngIf="!customer.orders || !customer.orders.length">
+            No orders found
+          </div>
         </div>
 
+        <cm-pagination [hidden]="!shownCustomers"
+                       [totalItems]="totalRecords"
+                       [pageSize]="pageSize"
+                       (pageChanged)="pageChanged($event)"></cm-pagination>
+
+      </div>
+      <div *ngIf="!shownCustomers">
+        No customers found
+      </div>
     </div>
+
+  </div>
 </div>

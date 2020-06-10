@@ -1,0 +1,28 @@
+.container{
+  display: flex;
+}
+.list-group-wrapper{
+  display: block;
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.new-order-form{
+
+}
+.new-order-form select {
+  margin-left: 5px;
+}
+.new-order-form input[type='text'],
+.new-order-form input[type='number'] {
+  margin-left: 5px;
+}
+.form-group{
+  display: flex;
+}
+.new-order-form .ng-invalid {
+  border-left: 5px solid #a94442;
+}
+.new-order-form .ng-valid {
+  border-left: 5px solid #42A948;
+}

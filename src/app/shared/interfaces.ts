@@ -1,53 +1,56 @@
-import { ModuleWithProviders } from '@angular/core';
-import { Routes } from '@angular/router';
-
 export interface ICustomer {
-    id: number;
-    firstName: string;
-    lastName: string;
-    gender: string;
-    address: string;
-    city: string;
-    state: IState;
-    orders?: IOrder[];
-    orderTotal?: number;
-    latitude?: number;
-    longitude?: number;
+  id: number;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  address: string;
+  city: string;
+  state: IState;
+  orders?: IOrder[];
+  orderTotal?: number;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface IMapDataPoint {
-    longitude: number;
-    latitutde: number;
-    markerText?: string;
+  longitude: number;
+  latitutde: number;
+  markerText?: string;
 }
 
 export interface IState {
-    abbreviation: string;
-    name: string;
+  abbreviation: string;
+  name: string;
 }
 
 export interface IOrder {
-    productName: string;
-    itemCost: number;
+  productName: string;
+  itemCost: number;
+}
+
+export interface IOrderWrapper {
+  customerId: number;
+  customerName: string;
+  products: IOrder[];
 }
 
 export interface IOrderItem {
-    id: number;
-    productName: string;
-    itemCost: number;
+  id: number;
+  productName: string;
+  itemCost: number;
 }
 
 export interface IPagedResults<T> {
-    totalRecords: number;
-    results: T;
+  totalRecords: number;
+  results: T;
 }
 
 export interface IUserLogin {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 export interface IApiResponse {
-    status: boolean;
-    error?: string;
+  status: boolean;
+  error?: string;
 }
