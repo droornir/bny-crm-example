@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {IOrder} from '../../shared/interfaces';
+import {defer} from 'rxjs';
 
 @Injectable()
 export class DataServiceMock {
-  baseUrl = 'http://localhost:9876';
-  customersBaseUrl = this.baseUrl + '/api/customers';
-  ordersBaseUrl = this.baseUrl + '/api/orders';
   orders: IOrder[];
   customers =  [{
     'id': 1,
@@ -25,8 +23,18 @@ export class DataServiceMock {
     'latitude': 33.299,
     'longitude': -111.963
   }];
+  allCustomers = this.customers;
   ordersCacheKey = 'cachedOrders';
 
   constructor() {
+  }
+  getCustomersPage(page: number, pageSize: number) {
+    return defer(() => Promise.resolve(this.customers));
+  }
+  getCustomers() {
+    return defer(() => Promise.resolve(this.customers));
+  }
+  getAllCustomers() {
+    return defer(() => Promise.resolve(this.customers));
   }
 }

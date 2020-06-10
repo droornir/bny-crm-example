@@ -16,7 +16,7 @@ export class NewOrderComponent implements OnInit {
   @ViewChild('newOrderForm', {static: true}) newOrderForm: NgForm;
 
   constructor() {
-    this.order = {customerName: '', customerId: 0, products: [{productName: '', itemCost: undefined}]};
+    this.order = {customerId: 0, products: [{productName: '', itemCost: undefined}]};
     this.newOrderEmitter = new EventEmitter<IOrderWrapper>();
   }
 
