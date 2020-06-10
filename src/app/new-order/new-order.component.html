@@ -1,13 +1,11 @@
 <div class="container">
   <form (ngSubmit)="submit()" #newOrderForm="ngForm" class="new-order-form" novalidate>
     <div class="form-group">
-      <select class="form-control" name="customerName" [(ngModel)]="order.customerName" #customerName="ngModel"
-              (change)="onNewOrderCustomerChange($event)" required>
+      <select class="form-control" name="customerName" (change)="onNewOrderCustomerChange($event)" required>
         <option [ngValue]="null" [disabled]="true" selected>Customer Name</option>
         <option *ngFor="let customer of allCustomers"
                 [value]="customer.id">{{customer.firstName + ' ' + customer.lastName}}</option>
       </select>
-      <div class="alert alert-danger" [hidden]="customerName.pristine || customerName.valid">Customer is required</div>
     </div>
     <div class="list-group-wrapper">
       <div class="form-group" *ngFor="let product of order.products; let i = index">

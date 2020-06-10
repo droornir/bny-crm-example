@@ -11,10 +11,7 @@ import {UtilitiesService} from './utilities.service';
 export class DataService {
   baseUrl = this.utilitiesService.getApiUrl();
   customersBaseUrl = this.baseUrl + '/api/customers';
-  ordersBaseUrl = this.baseUrl + '/api/orders';
   orders: IOrder[];
-  states: IState[];
-  ordersCacheKey = 'cachedOrders';
 
   constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {
   }

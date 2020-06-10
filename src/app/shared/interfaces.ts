@@ -30,7 +30,6 @@ export interface IOrder {
 
 export interface IOrderWrapper {
   customerId: number;
-  customerName: string;
   products: IOrder[];
 }
 
