@@ -1,0 +1,38 @@
+<div class="container">
+  <form (ngSubmit)="submit()" #newOrderForm="ngForm" class="new-order-form" novalidate>
+    <div class="form-group">
+      <select class="form-control" name="customerName" [(ngModel)]="order.customerName" #customerName="ngModel"
+              (change)="onNewOrderCustomerChange($event)" required>
+        <option [ngValue]="null" [disabled]="true" selected>Customer Name</option>
+        <option *ngFor="let customer of allCustomers"
+                [value]="customer.id">{{customer.firstName + ' ' + customer.lastName}}</option>
+      </select>
+      <div class="alert alert-danger" [hidden]="customerName.pristine || customerName.valid">Customer is required</div>
+    </div>
+    <div class="list-group-wrapper">
+      <div class="form-group" *ngFor="let product of order.products; let i = index">
+
+        <input placeholder="Product Name" type="text" id="productName" class="form-control" name="productName-{{i}}"
+               [(ngModel)]="product.productName" #productName="ngModel"
+               required>
+        <input placeholder="Item Cost" type="number" id="itemCost" class="form-control" name="itemCost-{{i}}"
+               [(ngModel)]="product.itemCost" #itemCost="ngModel"
+               required>
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
+    <div class="col-md-8 toolbar-item">
+      <a (click)="addProductToOrder()">
+        <span class="glyphicon glyphicon-plus"></span> Add Products
+      </a>
+    </div>
+    <div class="pull-right">
+      <button type="submit" class="btn btn-success" [disabled]="newOrderForm.pristine || !newOrderForm.valid">Save
+        Order
+      </button>
+    </div>
+  </form>
+
+  <br/>
+  <br/>
+</div>

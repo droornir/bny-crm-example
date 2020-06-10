@@ -11,8 +11,8 @@ PlaygroundModule
   });
 
 @Component({
-  selector: 'playground-app',
-  template: '<playground-root></playground-root>'
+  selector: 'cm-playground-app',
+  template: '<cm-playground-root></cm-playground-root>'
 })
 export class AppComponent {}
 
