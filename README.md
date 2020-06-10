@@ -11,6 +11,8 @@ Run npm start in a separate terminal window to build the TypeScript, watch for c
 
 Go to [localHost](http://localhost:8080) in your browser
 
+## Testin The Application
+Run ng test
 
 ## Contributing
 [Angular-JumpStart](https://github.com/DanWahlin/Angular-JumpStart) by Dan Wahlin
