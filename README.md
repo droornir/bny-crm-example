@@ -14,6 +14,8 @@ Go to [localHost](http://localhost:8080) in your browser
 ## Testing The Application
 Run ng test (test Orders && New-Orders components with Karma)
 
+Run ng e2e (test Orders component with protractor)
+
 ## Stack
 FE: Angular
 BE: NodeJs
