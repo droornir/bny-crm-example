@@ -5,7 +5,7 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('cm-root h1')).getText();
+  getParagraphText(cssSelector) {
+    return element(by.id(cssSelector)).getText();
   }
 }

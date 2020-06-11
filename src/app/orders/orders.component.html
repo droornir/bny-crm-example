@@ -1,15 +1,15 @@
 <div class="customers view indent">
   <div class="container">
     <header>
-      <h3>
-        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Orders
+      <h3 id="pageName">
+        <span class="glyphicon glyphicon-folder-open"></span>Orders
       </h3>
     </header>
     <br/>
     <div class="row">
       <div class="col-md-10 navbar toolbar-item">
         <a (click)="showNewOrderForm()">
-          <span class="glyphicon glyphicon-plus"></span> Toggle Add New Order
+          <span class="glyphicon glyphicon-plus"></span>Toggle Add New Order
         </a>
       </div>
     </div>
@@ -42,7 +42,7 @@
                        (pageChanged)="pageChanged($event)"></cm-pagination>
 
       </div>
-      <div *ngIf="!shownCustomers">
+      <div id="noCustomersPromptMessage" *ngIf="!shownCustomers">
         No customers found
       </div>
     </div>
