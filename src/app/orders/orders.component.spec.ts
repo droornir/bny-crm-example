@@ -35,8 +35,25 @@ describe('OrdersComponent', () => {
     expect(component.showAddOrderModal).toEqual(false);
     expect(component.allCustomers).toEqual(expectedCustomersArray);
   });
-});
+  it('should add new order', async () => {
+    await component.getAllCustomers();
+    expect(component.allCustomers).toEqual(expectedCustomersArray);
+    component.handleNewOrder(newOrder);
 
+    fixture.detectChanges();
+    
+    let savedCustomer = component.allCustomers[0];
+    let expectedCustomer = expectedCustomersArray[0];
+    let expectedOrders = newOrder.products.concat(expectedCustomer.orders);
+    expect(savedCustomer.orders).toEqual(expectedOrders);
+    expect(savedCustomer.orderTotal).toEqual(213.53)
+    expect(component.showAddOrderModal).toEqual(false);
+  });
+});
+const newOrder = {
+  customerId: 1,
+  products: [ {productName: 'Test product', itemCost: 5.55}]
+}
 const expectedCustomersArray = [{
   'id': 1,
   'firstName': 'ted',
