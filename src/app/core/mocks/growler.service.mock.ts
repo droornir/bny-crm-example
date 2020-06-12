@@ -5,7 +5,7 @@ export class GrowlerServiceMock {
 
   constructor() { }
 
-  growl: (message: string, growlType: GrowlerMessageType) => number;
+  growl (message: string, growlType: GrowlerMessageType) {return true;};
 
 }
 

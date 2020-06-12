@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {IOrder} from '../../shared/interfaces';
-import {defer} from 'rxjs';
+import {IOrder, IOrderWrapper, ICustomer} from '../../shared/interfaces';
+import {defer, Observable} from 'rxjs';
 
 @Injectable()
 export class DataServiceMock {
@@ -37,4 +37,30 @@ export class DataServiceMock {
   getAllCustomers() {
     return defer(() => Promise.resolve(this.customers));
   }
+  insertOrder(newOrder: IOrderWrapper) {
+    this.mockInsertNewOrder(newOrder);
+    this.calculateCustomersOrderTotal(this.customers);
+    return defer(() => Promise.resolve(this.customers));
+  }
+  mockInsertNewOrder(newOrder: IOrderWrapper) {
+    let customerId = newOrder.customerId;
+    let orderProducts = newOrder.products;
+    let customer = this.customers.find(customer => customer.id.toString() == customerId.toString());
+
+    if(!customer.orders){
+      customer.orders = orderProducts;
+    }
+    customer.orders = orderProducts.concat(customer.orders);
+    }
+    calculateCustomersOrderTotal(customers: ICustomer[]) {
+      for (const customer of customers) {
+        if (customer && customer.orders) {
+          let total = 0;
+          for (const order of customer.orders) {
+            total += order.itemCost;
+          }
+          customer.orderTotal = total;
+        }
+      }
+    }
 }
